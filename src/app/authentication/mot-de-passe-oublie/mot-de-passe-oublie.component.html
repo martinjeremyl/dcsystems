@@ -1,0 +1,35 @@
+<div class="login-background">
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div>
+      <div class="text-center mb-3-rem">
+        <i class="far fa-user-circle" style="font-size: 70px; color: white"></i>
+      </div>
+      <form [formGroup]="forgottenPasswordForm">
+        <div
+          class="form-group d-flex align-items-center justify-content-center"
+        >
+          <input
+            type="email"
+            class="form-control material-input w-75"
+            id="identifiant-mdp-oublie"
+            placeholder="Identifiant"
+            formControlName="email"
+            [class.is-invalid]="submitted && f.email.errors"
+          />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">L'email est obligatoire</div>
+            <div *ngIf="f.email.errors.email">L'email est incorrecte</div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn mt-4 material-rounded-gradius-button"
+          >
+            Récupérer mon mot de passe
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

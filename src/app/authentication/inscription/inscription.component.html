@@ -1,0 +1,98 @@
+<div class="login-background">
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div>
+      <div class="text-center">
+        <img src="../../../assets/dc-logo.png" width="250" />
+      </div>
+      <form [formGroup]="registerForm" (submit)="register()">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control material-input"
+            id="nom-inscription"
+            placeholder="Nom"
+            formControlName="nom"
+            [class.is-invalid]="submitted && f.nom.errors"
+          />
+          <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+            <div *ngIf="f.nom.errors.required">Le nom est obligatoire</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control material-input"
+            id="prenom-inscription"
+            placeholder="Prénom"
+            formControlName="prenom"
+            [class.is-invalid]="submitted && f.prenom.errors"
+          />
+          <div *ngIf="f.prenom.errors" class="invalid-feedback">
+            <div *ngIf="f.prenom.errors.required">
+              Le prénom est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control material-input"
+            id="email-inscription"
+            placeholder="Email"
+            formControlName="email"
+            [class.is-invalid]="submitted && f.email.errors"
+          />
+          <div *ngIf="f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">
+              L'adresse email est obligatoire
+            </div>
+            <div *ngIf="f.email.errors.email">
+              Le format de l'adresse email est incorrecte
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control material-input"
+            id="motDePasse-inscription"
+            placeholder="Mot de passe"
+            formControlName="password"
+            [class.is-invalid]="submitted && f.password.errors"
+          />
+          <div *ngIf="f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">
+              Le mot de passe est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control material-input"
+            id="confirmMotDePasse-inscription"
+            placeholder="Confirmer mot de passe"
+            formControlName="confirmPassword"
+            [class.is-invalid]="submitted && f.confirmPassword.errors"
+          />
+          <div *ngIf="f.confirmPassword.errors" class="invalid-feedback">
+            <div *ngIf="f.confirmPassword.errors.required">
+              Le mot de passe est obligatoire
+            </div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">
+              Les mots de passe doivent correspondre
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn mt-4 material-rounded-gradius-button"
+          >
+            Je m'inscris
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

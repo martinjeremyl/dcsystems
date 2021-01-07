@@ -1,0 +1,52 @@
+<div class="login-background">
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <div>
+      <div class="text-center">
+        <img src="../../../assets/dc-logo.png" width="250" />
+      </div>
+      <form [formGroup]="loginForm" (submit)="login()">
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control material-input"
+            id="identifiant-connexion"
+            placeholder="Identifiant"
+            formControlName="username"
+            [class.is-invalid]="submitted && f.username.errors"
+          />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">
+              L'identifiant est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control material-input"
+            id="motDePasse-connexion"
+            placeholder="Mot de passe"
+            formControlName="password"
+            [class.is-invalid]="submitted && f.password.errors"
+          />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">
+              Le mot de passe est obligatoire
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="btn mt-4 material-rounded-gradius-button"
+          >
+            Me connecter
+          </button>
+          <div class="text-center">
+            <span class="text-white">mot de passe oublié</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
