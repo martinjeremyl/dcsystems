@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MustMatch } from '../helpers/mustMatch';
-import { AuthenticationService } from '../services/authentication.service';
+import { LoaderService } from 'src/app/services/loader.service';
+import { MustMatch } from '../../helpers/mustMatch';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-inscription',
@@ -15,7 +16,8 @@ export class InscriptionComponent implements OnInit {
   constructor(
     private AuthenticationService: AuthenticationService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private loaderService: LoaderService
   ) {
     this.registerForm = this.fb.group(
       {
@@ -38,14 +40,20 @@ export class InscriptionComponent implements OnInit {
   }
   public register() {
     this.submitted = true;
+    this.loaderService.startLoading();
     if (this.registerForm.valid) {
       this.AuthenticationService.register(this.registerForm.value).subscribe(
         () => {
+          this.loaderService.stopLoading();
             this.router.navigate(['/login']);
+        },
+        () => {
+          this.loaderService.stopLoading();
         }
       );
     } else {
       this.registerForm.markAllAsTouched();
+      this.loaderService.stopLoading();
     }
   }
 }

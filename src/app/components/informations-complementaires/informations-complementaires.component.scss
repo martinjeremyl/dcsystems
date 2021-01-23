@@ -1,0 +1,40 @@
+.more-info-background {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../../../assets/BG.png");
+  background-position: center;
+  background-size: cover;
+  height: 33vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-upload > input {
+  display: none;
+}
+
+.color-picker-custom {
+  border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 8px;
+}
+
+.bullet-stepper {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.bullet-stepper-current {
+  background-color: #ae6dbc !important;
+  border: none !important;
+}
+
+.stepper-navigation-container {
+  position: fixed;
+  bottom: 30px;
+  width: 100%;
+}

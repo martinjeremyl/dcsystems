@@ -15,6 +15,7 @@ export interface User {
   spotify?: string;
   avatar?: string;
   couleur?: string;
+  hasCompletedInformations: boolean;
 }
 
 export interface Credentials {

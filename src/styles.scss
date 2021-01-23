@@ -24,6 +24,20 @@ body {
   color: rgb(206, 202, 202) !important;
 }
 
+.material-input-dark {
+  background-color: #fff0 !important;
+  border-bottom: 1px solid rgb(34, 34, 34) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  color: rgb(17, 16, 16) !important;
+}
+
+.material-input-dark::placeholder {
+  color: rgb(46, 45, 45) !important;
+}
+
 .material-rounded-gradius-button {
   background-image: linear-gradient(
     to right,
@@ -46,5 +60,24 @@ body {
   margin-bottom: 3rem !important;
 }
 
+.presentational-title {
+  font-size: 24px;
+}
+
+.darken-hr {
+  border-top: 1px solid rgb(0 0 0 / 36%);
+}
+
+.dc-purple-title {
+  font-size: 22px;
+  color: #ae6dbc;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";

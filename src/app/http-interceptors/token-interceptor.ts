@@ -4,17 +4,17 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { AuthenticationService } from '../authentication/services/authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private cookieService: CookieService) {}
+  constructor(private authService: AuthenticationService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    if (this.cookieService.check('token')) {
-      const token = this.cookieService.get('token');
+    if (this.authService.isUserSignedIn()) {
+      const token = this.authService.getUserToken();
       const authReq = req.clone({
         headers: req.headers.set('Authorization', `Bearer ${token}`),
       });

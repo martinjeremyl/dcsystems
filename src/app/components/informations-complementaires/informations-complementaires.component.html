@@ -1,0 +1,199 @@
+<div class="more-info-background">
+  <div class="text-center">
+    <img src="../../../assets/logo-blanc.png" width="250" />
+  </div>
+</div>
+<div class="text-center">
+  <div class="mt-4 mb-2 presentational-title">
+    Bienvenue {{ authService.currentUser?.prenom }},
+  </div>
+  <div class="px-3 mb-4">
+    Nous avons besoin de quelques informations pour pouvoir finaliser votre
+    inscription
+  </div>
+  <hr class="w-50 darken-hr" />
+</div>
+<form [formGroup]="moreInformationsForm" (submit)="submitMoreInformations()">
+  <div
+    class="text-center step-item"
+    [style.display]="1 === step ? 'block' : 'none'"
+  >
+    <div class="dc-purple-title">Photo de profil</div>
+    <div class="image-upload mt-4">
+      <label for="file-input">
+        <img
+          [src]="fileToUpload ? fileUrl : '../../../assets/avatar.svg'"
+          class="avatar"
+        />
+      </label>
+      <input
+        id="file-input"
+        type="file"
+        (change)="handleAvatarUpload($event)"
+      />
+    </div>
+    <div class="dc-purple-title mt-2">Votre couleur de thème</div>
+    <input
+      class="color-picker-custom mt-3"
+      [(colorPicker)]="color"
+      [style.background]="color"
+    />
+  </div>
+  <div
+    class="text-center step-item"
+    [style.display]="2 === step ? 'block' : 'none'"
+  >
+    <div class="dc-purple-title">Vos réseaux sociaux</div>
+    <div
+      class="form-group d-flex flex-row px-4 align-items-center justify-content-center my-2"
+    >
+      <img src="../../../assets/instagram.png" height="30" class="mr-3" />
+      <input
+        type="text"
+        class="form-control material-input-dark w-75"
+        id="identifiant-connexion"
+        placeholder="Instagram"
+        formControlName="instagram"
+      />
+    </div>
+    <div
+      class="form-group d-flex flex-row px-4 align-items-center justify-content-center my-2"
+    >
+      <img src="../../../assets/facebook.svg" height="30" class="mr-3" />
+      <input
+        type="text"
+        class="form-control material-input-dark w-75"
+        id="identifiant-connexion"
+        placeholder="Facebook"
+        formControlName="facebook"
+      />
+    </div>
+    <div
+      class="form-group d-flex flex-row px-4 align-items-center justify-content-center my-2"
+    >
+      <img src="../../../assets/youtube.svg" height="30" class="mr-3" />
+      <input
+        type="text"
+        class="form-control material-input-dark w-75"
+        id="identifiant-connexion"
+        placeholder="Youtube"
+        formControlName="youtube"
+      />
+    </div>
+    <div
+      class="form-group d-flex flex-row px-4 align-items-center justify-content-center my-2"
+    >
+      <img src="../../../assets/soundcloud.svg" height="30" class="mr-3" />
+      <input
+        type="text"
+        class="form-control material-input-dark w-75"
+        id="identifiant-connexion"
+        placeholder="Soundcloud"
+        formControlName="soundcloud"
+      />
+    </div>
+    <div
+      class="form-group d-flex flex-row px-4 align-items-center justify-content-center my-2"
+    >
+      <img src="../../../assets/spotify.svg" height="30" class="mr-3" />
+      <input
+        type="text"
+        class="form-control material-input-dark w-75"
+        id="identifiant-connexion"
+        placeholder="Spotify"
+        formControlName="spotify"
+      />
+    </div>
+  </div>
+  <div
+    class="text-center step-item"
+    [style.display]="3 === step ? 'block' : 'none'"
+  >
+    <div class="dc-purple-title mb-4">Informations de votre entreprise</div>
+    <div
+      class="form-group d-flex flex-row px-4 py-2 align-items-center justify-content-center mt-4 mb-2"
+    >
+      <img src="../../../assets/phone-call.svg" height="30" class="mr-3" />
+      <input
+        type="text"
+        class="form-control material-input-dark w-75"
+        id="identifiant-connexion"
+        placeholder="Téléphone portable"
+        formControlName="telephone"
+      />
+    </div>
+    <div
+      class="form-group d-flex flex-row px-4 py-2 align-items-center justify-content-center my-2"
+    >
+      <img
+        src="../../../assets/world-wide-web (1).svg"
+        height="30"
+        class="mr-3"
+      />
+      <input
+        type="text"
+        class="form-control material-input-dark w-75"
+        id="identifiant-connexion"
+        placeholder="Site internet"
+        formControlName="site"
+      />
+    </div>
+    <div
+      class="form-group d-flex flex-row px-4 py-2 align-items-center justify-content-center my-2"
+    >
+      <img src="../../../assets/adresse.svg" height="30" class="mr-3" />
+      <input
+        type="text"
+        class="form-control material-input-dark w-75"
+        id="identifiant-connexion"
+        placeholder="Adresse"
+        formControlName="adresse"
+      />
+    </div>
+  </div>
+  <div
+    class="text-center step-item"
+    [style.display]="4 === step ? 'block' : 'none'"
+  >
+    <div class="dc-purple-title">Confirmez vos informations</div>
+    <div class="my-4">
+      Vous pourrez modifier ces informations à tout moment et en ajouter de
+      nouvelles
+    </div>
+    <button type="submit" class="btn material-rounded-gradius-button">
+      Je valide mes informations
+    </button>
+  </div>
+</form>
+<div class="stepper-navigation-container">
+  <div
+    class="d-flex flew-row align-items-center justify-content-center mt-4 stepper"
+  >
+    <div class="mr-4" (click)="previousStep()">
+      <img src="../../../assets/left-arrow.svg" width="25" />
+    </div>
+    <div
+      class="bullet-stepper mx-3"
+      (click)="changeStep(1)"
+      [class.bullet-stepper-current]="1 === step"
+    ></div>
+    <div
+      class="bullet-stepper mx-3"
+      (click)="changeStep(2)"
+      [class.bullet-stepper-current]="2 === step"
+    ></div>
+    <div
+      class="bullet-stepper mx-3"
+      (click)="changeStep(3)"
+      [class.bullet-stepper-current]="3 === step"
+    ></div>
+    <div
+      class="bullet-stepper mx-3"
+      (click)="changeStep(4)"
+      [class.bullet-stepper-current]="4 === step"
+    ></div>
+    <div class="ml-4" (click)="nextStep()">
+      <img src="../../../assets/right-arrow.svg" width="25" />
+    </div>
+  </div>
+</div>

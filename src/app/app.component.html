@@ -1,1 +1,9 @@
+<div
+  class="loader d-flex align-items-center justify-content-center"
+  *ngIf="loaderService.isLoading"
+>
+  <div>
+    <img src="../assets/logo-loader.gif" width="200" />
+  </div>
+</div>
 <router-outlet></router-outlet>

@@ -2,9 +2,9 @@
   <div class="h-100 d-flex align-items-center justify-content-center">
     <div>
       <div class="text-center mb-3-rem">
-        <i class="far fa-user-circle" style="font-size: 70px; color: white"></i>
+        <img src="../../../assets/dc-logo.png" width="250" />
       </div>
-      <form [formGroup]="forgottenPasswordForm">
+      <form [formGroup]="forgottenPasswordForm" (submit)="resetPassword()">
         <div
           class="form-group d-flex align-items-center justify-content-center"
         >
