@@ -4,12 +4,16 @@ import { IsSignedInGuard } from './authentication/guards/is-signed-in-guard';
 import { InformationsComplementairesComponent } from './components/informations-complementaires/informations-complementaires.component';
 
 const routes: Routes = [
-  { path: 'more-information', component: InformationsComplementairesComponent, canActivate: [IsSignedInGuard]}
+  {
+    path: 'more-information',
+    component: InformationsComplementairesComponent,
+    canActivate: [IsSignedInGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [IsSignedInGuard]
+  providers: [IsSignedInGuard],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -7,21 +7,24 @@ import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
-  styleUrls: ['./connexion.component.scss']
+  styleUrls: ['./connexion.component.scss'],
 })
 export class ConnexionComponent implements OnInit {
-
   public loginForm: FormGroup;
   public submitted = false;
-  constructor(private fb: FormBuilder, private AuthenticationService: AuthenticationService, private cookieService: CookieService, private loaderService: LoaderService) {
+  constructor(
+    private fb: FormBuilder,
+    private AuthenticationService: AuthenticationService,
+    private cookieService: CookieService,
+    private loaderService: LoaderService
+  ) {
     this.loginForm = this.fb.group({
-        username: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required]]
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   get f() {
     return this.loginForm.controls;
@@ -40,7 +43,7 @@ export class ConnexionComponent implements OnInit {
         () => {
           this.loaderService.stopLoading();
         }
-      )
+      );
     } else {
       this.loginForm.markAllAsTouched();
       this.loaderService.stopLoading();

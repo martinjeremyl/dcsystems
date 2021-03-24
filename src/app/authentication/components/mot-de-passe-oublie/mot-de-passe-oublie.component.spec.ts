@@ -8,9 +8,8 @@ describe('MotDePasseOublieComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MotDePasseOublieComponent ]
-    })
-    .compileComponents();
+      declarations: [MotDePasseOublieComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

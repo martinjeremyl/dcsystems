@@ -45,7 +45,7 @@ export class InscriptionComponent implements OnInit {
       this.AuthenticationService.register(this.registerForm.value).subscribe(
         () => {
           this.loaderService.stopLoading();
-            this.router.navigate(['/login']);
+          this.router.navigate(['/login']);
         },
         () => {
           this.loaderService.stopLoading();

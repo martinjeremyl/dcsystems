@@ -5,13 +5,13 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
 import { MotDePasseOublieComponent } from './components/mot-de-passe-oublie/mot-de-passe-oublie.component';
 
 const authRoutes: Routes = [
-  { path: 'register', component: InscriptionComponent},
-  { path: 'login', component: ConnexionComponent},
-  { path: 'reset-password', component: MotDePasseOublieComponent}
+  { path: 'register', component: InscriptionComponent },
+  { path: 'login', component: ConnexionComponent },
+  { path: 'reset-password', component: MotDePasseOublieComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(authRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AuthenticationRoutingModule { }
+export class AuthenticationRoutingModule {}

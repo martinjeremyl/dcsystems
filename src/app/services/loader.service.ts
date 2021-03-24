@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoaderService {
-
   public isLoading = false;
-  constructor() {
-  }
+  constructor() {}
 
   public startLoading() {
     this.isLoading = true;

@@ -6,16 +6,19 @@ import { LoaderService } from 'src/app/services/loader.service';
 @Component({
   selector: 'app-informations-complementaires',
   templateUrl: './informations-complementaires.component.html',
-  styleUrls: ['./informations-complementaires.component.scss']
+  styleUrls: ['./informations-complementaires.component.scss'],
 })
 export class InformationsComplementairesComponent implements OnInit {
-
-  fileToUpload: File | null |undefined;
+  fileToUpload: File | null | undefined;
   fileUrl: string | undefined;
   color = '#ae6dbc';
   step = 1;
   moreInformationsForm: FormGroup;
-  constructor(public authService: AuthenticationService, private fb: FormBuilder, private loaderService: LoaderService) {
+  constructor(
+    public authService: AuthenticationService,
+    private fb: FormBuilder,
+    private loaderService: LoaderService
+  ) {
     this.moreInformationsForm = this.fb.group({
       couleur: [''],
       instagram: [''],
@@ -27,10 +30,9 @@ export class InformationsComplementairesComponent implements OnInit {
       site: [''],
       adresse: [''],
     });
-   }
-
-  ngOnInit(): void {
   }
+
+  ngOnInit(): void {}
 
   handleAvatarUpload(event: any) {
     this.fileToUpload = event.target.files[0];
@@ -62,26 +64,28 @@ export class InformationsComplementairesComponent implements OnInit {
   submitMoreInformations() {
     this.loaderService.startLoading();
     this.moreInformationsForm.patchValue({
-      couleur: this.color
+      couleur: this.color,
     });
     if (this.moreInformationsForm.valid) {
-      this.authService.moreInformations(this.moreInformationsForm.value).subscribe(
-        () => {
-          if (this.fileToUpload instanceof File) {
-            this.authService.uploadAvatar(this.fileToUpload).subscribe(
+      this.authService
+        .moreInformations(this.moreInformationsForm.value)
+        .subscribe(
+          () => {
+            if (this.fileToUpload instanceof File) {
+              this.authService.uploadAvatar(this.fileToUpload).subscribe(
                 () => {
                   this.loaderService.stopLoading();
                 },
                 () => {
                   this.loaderService.stopLoading();
                 }
-            );
+              );
+            }
+          },
+          () => {
+            this.loaderService.stopLoading();
           }
-        },
-        () => {
-          this.loaderService.stopLoading();
-        }
-      );
+        );
     } else {
       this.moreInformationsForm.markAllAsTouched();
       this.loaderService.stopLoading();

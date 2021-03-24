@@ -8,17 +8,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { CookieService } from 'ngx-cookie-service';
 
-
-
 @NgModule({
-  declarations: [ConnexionComponent, MotDePasseOublieComponent, InscriptionComponent],
+  declarations: [
+    ConnexionComponent,
+    MotDePasseOublieComponent,
+    InscriptionComponent,
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
   ],
   providers: [CookieService],
-  exports: [ConnexionComponent, MotDePasseOublieComponent, InscriptionComponent]
+  exports: [
+    ConnexionComponent,
+    MotDePasseOublieComponent,
+    InscriptionComponent,
+  ],
 })
-export class AuthenticationModule { }
+export class AuthenticationModule {}

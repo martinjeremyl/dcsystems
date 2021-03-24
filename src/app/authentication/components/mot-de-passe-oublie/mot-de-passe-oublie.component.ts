@@ -7,21 +7,24 @@ import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-mot-de-passe-oublie',
   templateUrl: './mot-de-passe-oublie.component.html',
-  styleUrls: ['./mot-de-passe-oublie.component.scss']
+  styleUrls: ['./mot-de-passe-oublie.component.scss'],
 })
 export class MotDePasseOublieComponent implements OnInit {
-
   public forgottenPasswordForm: FormGroup;
   public submitted = false;
 
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private router: Router, private loaderService: LoaderService) {
+  constructor(
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    private loaderService: LoaderService
+  ) {
     this.forgottenPasswordForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]]
-    })
+      email: ['', [Validators.required, Validators.email]],
+    });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   get f() {
     return this.forgottenPasswordForm.controls;
@@ -31,7 +34,9 @@ export class MotDePasseOublieComponent implements OnInit {
     this.submitted = true;
     this.loaderService.startLoading();
     if (this.forgottenPasswordForm.valid) {
-        this.authenticationService.resetPassword(this.forgottenPasswordForm.value).subscribe(
+      this.authenticationService
+        .resetPassword(this.forgottenPasswordForm.value)
+        .subscribe(
           () => {
             this.router.navigate(['login']);
             this.loaderService.stopLoading();
@@ -39,7 +44,7 @@ export class MotDePasseOublieComponent implements OnInit {
           () => {
             this.loaderService.stopLoading();
           }
-        )
+        );
     } else {
       this.forgottenPasswordForm.markAllAsTouched();
       this.loaderService.stopLoading();

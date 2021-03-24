@@ -16,17 +16,17 @@ import { HomeVisitorComponent } from './components/home-visitor/home-visitor.com
   declarations: [
     AppComponent,
     InformationsComplementairesComponent,
-    HomeVisitorComponent
-    ],
+    HomeVisitorComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
     NgbModule,
     ColorPickerModule,
-    ReactiveFormsModule
-    ],
+    ReactiveFormsModule,
+  ],
   providers: [httpInterceptorProviders, LoaderService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
